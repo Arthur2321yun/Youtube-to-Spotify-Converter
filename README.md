@@ -88,7 +88,9 @@ This Python script transfers your liked videos from YouTube to Spotify by adding
 ### 3. Python Environment Setup
 
 #### Step 3.1: Install Required Packages
-`pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client spotipy requests`
+```
+pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client spotipy requests
+```
 
 
 #### Step 3.2: Configure the Script
@@ -141,10 +143,12 @@ SPOTIFY_REDIRECT_URI = "http://127.0.0.1:8080" # Keep this as is
 ## 📊 Usage
 
 1. **Run the script**:
-`python youtube_to_spotify.py`
+```
+python youtube_to_spotify.py
+```
 
 
-2. **Follow the authentication prompts**:
+3. **Follow the authentication prompts**:
 - Browser windows will open for YouTube and Spotify login
 - Grant the requested permissions
 
